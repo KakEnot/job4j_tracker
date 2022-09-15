@@ -9,11 +9,12 @@ public class Error {
 
     }
 
-    public Error(boolean active, int status, String message){
-        this.active=active;
-        this.status=status;
-        this.message=message;
+    public Error(boolean active, int status, String message) {
+        this.active = active;
+        this.status = status;
+        this.message = message;
     }
+
     public void printInfo() {
         System.out.println("active: " + active);
         System.out.println("status: " + status);
@@ -21,9 +22,9 @@ public class Error {
     }
 
     public static void main(String[] args) {
-        Error error1=new Error();
-        Error error2=new Error(true, 2, "urururur");
-        Error error3=new Error(false, 1, "oioioioio");
+        Error error1 = new Error();
+        Error error2 = new Error(true, 2, "urururur");
+        Error error3 = new Error(false, 1, "oioioioio");
 
         error1.printInfo();
         error2.printInfo();
