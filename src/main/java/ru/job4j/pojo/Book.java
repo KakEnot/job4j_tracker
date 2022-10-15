@@ -4,9 +4,9 @@ public class Book {
     private String name;
     private int countPages;
 
-    public Book(String name, int countPages){
-        this.name=name;
-        this.countPages=countPages;
+    public Book(String name, int countPages) {
+        this.name = name;
+        this.countPages = countPages;
     }
 
     public String getName() {
