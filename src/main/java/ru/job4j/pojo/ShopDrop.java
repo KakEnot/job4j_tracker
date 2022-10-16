@@ -9,7 +9,6 @@ public class ShopDrop {
             products[i + 1] = products[i];
             products[i] = temp;
         }
-
         return products;
     }
 }
