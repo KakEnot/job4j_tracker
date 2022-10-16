@@ -13,7 +13,7 @@ public class Library {
         books[2] = book3;
         books[3] = book4;
         for (Book bk : books) {
-            System.out.println(bk.getName() + " - " + bk.getCountPages());
+            System.out.println(bk.getName() + "-" + bk.getCountPages());
         }
 
         Book temp = books[0];
@@ -21,12 +21,12 @@ public class Library {
         books[3] = temp;
 
         for (Book bk : books) {
-            System.out.println(bk.getName() + " - " + bk.getCountPages());
+            System.out.println(bk.getName() + "-" + bk.getCountPages());
         }
 
         for (Book bk : books) {
             if ("Clean code".equals(bk.getName())) {
-                System.out.println(bk.getName() + " - " + bk.getCountPages());
+                System.out.println(bk.getName() + "-" + bk.getCountPages());
             }
         }
     }
