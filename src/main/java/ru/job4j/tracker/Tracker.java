@@ -55,8 +55,8 @@ public class Tracker {
 
     public boolean replace(int id, Item item) {
         if (findById(id) != null) {
-           items [indexOf(id)] = item;
-           item.setId(id);
+            items[indexOf(id)] = item;
+            item.setId(id);
             return true;
         } else {
             return false;
