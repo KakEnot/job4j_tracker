@@ -11,7 +11,6 @@ public class MagicBall {
         System.out.println("Я великий Оракул. Что ты хочешь узнать? ");
         input.nextLine();
 
-
         switch (answer) {
             case 0 -> System.out.println("Да");
             case 1 -> System.out.println("Нет");
