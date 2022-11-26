@@ -6,12 +6,12 @@ public class Bus implements Transport {
     boolean isDriving = false;
 
     @Override
-    public void Drive() {
-        isDriving = true;
+    public void drive() {
+        boolean isDriving = true;
     }
 
     @Override
-    public void Passenger(int count) {
+    public void passenger(int count) {
         passengerCount += count;
     }
 
