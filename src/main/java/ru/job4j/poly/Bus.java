@@ -2,8 +2,8 @@ package ru.job4j.poly;
 
 public class Bus implements Transport {
 
-    int passengerCount = 0;
-    boolean isDriving = false;
+    private int passengerCount = 0;
+    private boolean isDriving = false;
 
     @Override
     public void drive() {
