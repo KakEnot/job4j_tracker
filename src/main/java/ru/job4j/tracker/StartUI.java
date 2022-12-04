@@ -29,7 +29,7 @@ public class StartUI {
                 new DeleteAction(),
                 new FindItemByIdAction(),
                 new FindItemsByNameAction(),
-                new ExitProgramAction()
+                new ExitAction()
         };
         new StartUI().init(input, tracker, actions);
     }
