@@ -21,7 +21,7 @@ public class ShowAction implements UserAction {
                 output.println(item);
             }
         } else {
-            output.println("Хранилище еще не содержит заявок.");
+            output.println("The repository does not contain any items yet.");
         }
         return true;
     }

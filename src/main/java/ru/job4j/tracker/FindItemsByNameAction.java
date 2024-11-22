@@ -22,7 +22,7 @@ public class FindItemsByNameAction implements UserAction {
                 output.println(item);
             }
         } else {
-            output.println("Заявки с именем: " + name + " не найдены.");
+            output.println("Items with name: " + name + " not found.");
         }
         return true;
     }

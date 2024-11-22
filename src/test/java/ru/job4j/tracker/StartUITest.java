@@ -65,7 +65,225 @@ public class StartUITest {
         new StartUI(output).init(input, tracker, actions);
         assertThat(output.toString()).isEqualTo("Menu:" + System.lineSeparator()
                 + "0. Exit Program" + System.lineSeparator()
-                + "=== Сompletion of the program ===" + System.lineSeparator()
+                + "=== The program was completed ===" + System.lineSeparator()
+        );
+    }
+
+    @Test
+    void whenReplaceItemTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+        Item one = tracker.add(new Item("test1"));
+        String replaceName = "New Test Name";
+        Input input = new MockInput(
+                new String[]{"0", String.valueOf(one.getId()), replaceName, "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new EditAction(output),
+                new ExitAction(output)
+        };
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Edit item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Edit item ===" + ln
+                        + "The item was changed successfully." + ln
+                        + "Menu:" + ln
+                        + "0. Edit item" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
+        );
+    }
+
+    @Test
+    void whenFindAllActionWithTwoItemsTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+
+        Item item1 = new Item("test1");
+        Item item2 = new Item("test2");
+
+        tracker.add(item1);
+        tracker.add(item2);
+
+        Input input = new MockInput(
+                new String[]{"0", "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new ShowAction(output),
+                new ExitAction(output)
+        };
+
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Show all items ===" + ln
+                        + item1 + ln
+                        + item2 + ln
+                        + "Menu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
+        );
+
+    }
+
+    @Test
+    void whenFindAllActionWithNoItemsTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+
+        Input input = new MockInput(
+                new String[]{"0", "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new ShowAction(output),
+                new ExitAction(output)
+        };
+
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Show all items ===" + ln
+                        + "The repository does not contain any items yet." + ln
+                        + "Menu:" + ln
+                        + "0. Show all items" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
+        );
+
+    }
+
+    @Test
+    void whenFindByIdActionTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+
+        Item item1 = new Item("test1");
+
+        tracker.add(item1);
+
+        Input input = new MockInput(
+                new String[]{"0", String.valueOf(item1.getId()), "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindItemByIdAction(output),
+                new ExitAction(output)
+        };
+
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Find item by id ===" + ln
+                        + item1 + ln
+                        + "Menu:" + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
+        );
+
+    }
+
+    @Test
+    void whenFindByIdActionWithNotExistIdTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+
+        Input input = new MockInput(
+                new String[]{"0", "1", "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindItemByIdAction(output),
+                new ExitAction(output)
+        };
+
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Find item by id ===" + ln
+                        + "Item with id: 1 not found." + ln
+                        + "Menu:" + ln
+                        + "0. Find item by id" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
+        );
+
+    }
+
+    @Test
+    void whenFindByNameActionTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+
+        Item item1 = new Item("test");
+        Item item2 = new Item("test");
+
+        tracker.add(item1);
+        tracker.add(item2);
+
+        Input input = new MockInput(
+                new String[]{"0", item1.getName(), "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindItemsByNameAction(output),
+                new ExitAction(output)
+        };
+
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Find items by name ===" + ln
+                        + item1 + ln
+                        + item2 + ln
+                        + "Menu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
+        );
+    }
+
+    @Test
+    void whenFindByNameActionWithNotExistNameTestOutputIsSuccessfully() {
+        Output output = new StubOutput();
+        Tracker tracker = new Tracker();
+
+        Input input = new MockInput(
+                new String[]{"0", "notExist", "1"}
+        );
+        UserAction[] actions = new UserAction[]{
+                new FindItemsByNameAction(output),
+                new ExitAction(output)
+        };
+
+        new StartUI(output).init(input, tracker, actions);
+        String ln = System.lineSeparator();
+        assertThat(output.toString()).isEqualTo(
+                "Menu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit Program" + ln
+                        + "=== Find items by name ===" + ln
+                        + "Items with name: notExist not found." + ln
+                        + "Menu:" + ln
+                        + "0. Find items by name" + ln
+                        + "1. Exit Program" + ln
+                        + "=== The program was completed ===" + ln
         );
     }
 }

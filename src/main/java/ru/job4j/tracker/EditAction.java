@@ -20,9 +20,9 @@ public class EditAction implements UserAction {
         String name = input.askStr("Enter name: ");
         Item item = new Item(name);
         if (tracker.replace(id, item)) {
-            output.println("Заявка изменена успешно.");
+            output.println("The item was changed successfully.");
         } else {
-            output.println("Ошибка замены заявки.");
+            output.println("Item Edit Error.");
 
         }
         return true;
