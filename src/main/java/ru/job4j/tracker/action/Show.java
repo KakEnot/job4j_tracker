@@ -1,9 +1,13 @@
-package ru.job4j.tracker;
+package ru.job4j.tracker.action;
 
-public class ShowAction implements UserAction {
+import ru.job4j.tracker.*;
+import ru.job4j.tracker.input.Input;
+import ru.job4j.tracker.output.Output;
+
+public class Show implements UserAction {
     private final Output output;
 
-    public ShowAction(Output output) {
+    public Show(Output output) {
         this.output = output;
     }
 
