@@ -4,10 +4,10 @@ import ru.job4j.tracker.*;
 import ru.job4j.tracker.input.Input;
 import ru.job4j.tracker.output.Output;
 
-public class Create implements UserAction {
+public class CreateAction implements UserAction {
     private final Output output;
 
-    public Create(Output output) {
+    public CreateAction(Output output) {
         this.output = output;
     }
 
