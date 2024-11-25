@@ -8,6 +8,7 @@ public class FindEl {
         for (int i = 0; i < value.length; i++) {
             if (value[i].equals(key)) {
                 result = i;
+                break;
             }
         }
         if (result == -1) {
@@ -17,9 +18,9 @@ public class FindEl {
     }
 
     public static void main(String[] args) {
-        String[] value = new String[]{"la", "ka", "to"};
+        String[] value = new String[]{"la", "ka", "to", "ka"};
         try {
-            indexOf(value, "lwa");
+            indexOf(value, "ka");
         } catch (ElementNotFoundException e) {
             e.printStackTrace();
         }
