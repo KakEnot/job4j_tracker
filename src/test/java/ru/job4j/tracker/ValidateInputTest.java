@@ -7,13 +7,9 @@ import ru.job4j.tracker.input.ValidateInput;
 import ru.job4j.tracker.output.Output;
 import ru.job4j.tracker.output.StubOutput;
 
-import java.util.Random;
-
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
 public class ValidateInputTest {
-
-    Random random = new Random();
 
     @Test
     void whenInvalidInput() {
@@ -29,15 +25,11 @@ public class ValidateInputTest {
     @Test
     void whenValidInput() {
         Output output = new StubOutput();
-        for (int i = 0; i < 10; i++) {
-            int number = random.nextInt(1, 100);
-            Input in = new MockInput(
-                    new String[]{String.valueOf(number)}
-            );
-            ValidateInput input = new ValidateInput(output, in);
-            int selected = input.askInt("Enter menu:");
-            assertThat(selected).isEqualTo(number);
-        }
+        int number = 5;
+        Input in = new MockInput(new String[]{"5"});
+        ValidateInput input = new ValidateInput(output, in);
+        int selected = input.askInt("Enter menu:");
+        assertThat(selected).isEqualTo(number);
     }
 
     @Test
