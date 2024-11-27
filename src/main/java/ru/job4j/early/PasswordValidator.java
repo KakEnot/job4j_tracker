@@ -17,9 +17,8 @@ public class PasswordValidator {
             );
         }
 
-        String[] substrings = new String[]{"qwerty", "12345", "password", "admin", "user"};
         boolean isContainSubstring = false;
-        for (String substring : substrings) {
+        for (String substring : FORBIDDEN) {
             if (password.toLowerCase().contains(substring)) {
                 isContainSubstring = true;
                 break;
@@ -34,20 +33,28 @@ public class PasswordValidator {
         boolean hasLowCase = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
-        String specialCharacters = ".*[<(\\[{\\\\^\\-=$!|\\]})?*+.>].*";
+        String specialCharacters = "!#\\$%&'\\*\\+,-./:;<=>\\?@\\^_`|~";
+
 
         for (char symbol : password.toCharArray()) {
+
             if (Character.isUpperCase(symbol)) {
                 hasUpCase = true;
             }
+
             if (Character.isLowerCase(symbol)) {
                 hasLowCase = true;
             }
+
             if (Character.isDigit(symbol)) {
                 hasDigit = true;
             }
-            if (password.matches(specialCharacters)) {
-                hasSpecial = true;
+
+            for (char specialSymbol : specialCharacters.toCharArray()) {
+                if (specialSymbol == symbol) {
+                    hasSpecial = true;
+                    break;
+                }
             }
         }
 
