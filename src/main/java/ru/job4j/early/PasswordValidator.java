@@ -35,7 +35,6 @@ public class PasswordValidator {
         boolean hasSpecial = false;
         String specialCharacters = "!#\\$%&'\\*\\+,-./:;<=>\\?@\\^_`|~";
 
-
         for (char symbol : password.toCharArray()) {
 
             if (Character.isUpperCase(symbol)) {
