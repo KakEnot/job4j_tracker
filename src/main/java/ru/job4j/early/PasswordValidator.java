@@ -33,7 +33,6 @@ public class PasswordValidator {
         boolean hasLowCase = false;
         boolean hasDigit = false;
         boolean hasSpecial = false;
-        String specialCharacters = "!#\\$%&'\\*\\+,-./:;<=>\\?@\\^_`|~";
 
         for (char symbol : password.toCharArray()) {
 
@@ -49,12 +48,11 @@ public class PasswordValidator {
                 hasDigit = true;
             }
 
-            for (char specialSymbol : specialCharacters.toCharArray()) {
-                if (specialSymbol == symbol) {
-                    hasSpecial = true;
-                    break;
-                }
+            if (!Character.isDigit(symbol)&&!Character.isLetter(symbol)) {
+                hasSpecial = true;
+                break;
             }
+
         }
 
         if (!hasUpCase) {
