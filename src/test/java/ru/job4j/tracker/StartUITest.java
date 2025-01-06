@@ -1,6 +1,5 @@
 package ru.job4j.tracker;
 
-import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import ru.job4j.tracker.action.*;
 import ru.job4j.tracker.input.Input;
@@ -286,7 +285,6 @@ public class StartUITest {
         );
     }
 
-    @Disabled
     @Test
     void whenInvalidExit() {
         Output output = new StubOutput();
@@ -296,7 +294,7 @@ public class StartUITest {
         Tracker tracker = new Tracker();
 
         ArrayList<UserAction> actions = new ArrayList<>();
-        actions.add(new FindItemsByNameAction(output));
+        actions.add(new ExitAction(output));
 
         new StartUI(output).init(input, tracker, actions);
         String ln = System.lineSeparator();
