@@ -9,7 +9,7 @@ public class UsageMap {
         hashMap.put("email_1@email.com", "Name_1 Surname_1");
         for (String key : hashMap.keySet()) {
             String value = hashMap.get(key);
-            System.out.println(key + ";" + value);
+            System.out.println(key + "-" + value);
         }
     }
 }
