@@ -130,7 +130,6 @@ public class StartUITest {
                         + "1. Exit Program" + ln
                         + "=== The program was completed ===" + ln
         );
-
     }
 
     @Test
