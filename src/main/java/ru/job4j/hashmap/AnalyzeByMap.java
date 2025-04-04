@@ -1,6 +1,8 @@
 package ru.job4j.hashmap;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 
 public class AnalyzeByMap {
     public static double averageScore(List<Pupil> pupils) {
@@ -35,12 +37,8 @@ public class AnalyzeByMap {
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (subjects.containsKey(subject.name())) {
-                    double sourceScore = subjects.get(subject.name());
-                    subjects.put(subject.name(), sourceScore + subject.score());
-                } else {
-                    subjects.put(subject.name(), (double) subject.score());
-                }
+                double sourceScore = subjects.getOrDefault(subject.name(), 0D);
+                subjects.put(subject.name(), sourceScore + subject.score());
             }
         }
 
@@ -73,12 +71,8 @@ public class AnalyzeByMap {
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                if (!subjects.containsKey(subject.name())) {
-                    subjects.put(subject.name(), (double) subject.score());
-                } else {
-                    double sourceScore = subjects.get(subject.name());
-                    subjects.put(subject.name(), sourceScore + subject.score());
-                }
+                double sourceScore = subjects.getOrDefault(subject.name(), 0D);
+                subjects.put(subject.name(), sourceScore + subject.score());
             }
         }
 
