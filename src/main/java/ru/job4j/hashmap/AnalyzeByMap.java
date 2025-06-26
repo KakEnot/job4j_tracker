@@ -37,8 +37,7 @@ public class AnalyzeByMap {
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                double sourceScore = subjects.getOrDefault(subject.name(), 0D);
-                subjects.put(subject.name(), sourceScore + subject.score());
+                subjects.merge(subject.name(), (double) subject.score(), Double::sum);
             }
         }
 
@@ -71,8 +70,7 @@ public class AnalyzeByMap {
 
         for (Pupil pupil : pupils) {
             for (Subject subject : pupil.subjects()) {
-                double sourceScore = subjects.getOrDefault(subject.name(), 0D);
-                subjects.put(subject.name(), sourceScore + subject.score());
+                subjects.merge(subject.name(), (double) subject.score(), Double::sum);
             }
         }
 
