@@ -78,8 +78,8 @@ public class Car {
 
     @Override
     public String toString() {
-        return "Car{" +
-                "brand with Builder='" + brand + '\''
+        return "Car{"
+                + "brand with Builder='" + brand + '\''
                 + ", model with Builder='" + model + '\''
                 + ", created with Builder=" + created
                 + ", volume with Builder=" + volume
